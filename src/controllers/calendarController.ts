@@ -23,17 +23,23 @@ export const getSupportedYears = async (req: Request, res: Response) => {
     }
   } catch (error) {}
 
-  res.json({ ok: true, years });
+  res
+    .status(200)
+    .setHeader("Content-Type", "application/json")
+    .json({ ok: true, years });
 };
 
 export const getCalendar = async (req: Request, res: Response) => {
   const year = Number(req.query.year);
 
   if (isNaN(year)) {
-    res.status(400).json({
-      ok: false,
-      message: `Invalid value '${req.query.year}' for year`,
-    });
+    res
+      .status(400)
+      .setHeader("Content-Type", "application/json")
+      .json({
+        ok: false,
+        message: `Invalid value '${req.query.year}' for year`,
+      });
     return;
   }
 
@@ -41,6 +47,7 @@ export const getCalendar = async (req: Request, res: Response) => {
   if (!isSupported) {
     res
       .status(400)
+      .setHeader("Content-Type", "application/json")
       .json({ ok: false, message: `Year ${year} is not supported` });
     return;
   }
@@ -57,12 +64,18 @@ export const getCalendar = async (req: Request, res: Response) => {
       months: getMonthCalendar(response),
     };
 
-    res.status(200).json({ ok: true, message: "success", result });
+    res
+      .status(200)
+      .setHeader("Content-Type", "application/json")
+      .json({ ok: true, message: "success", result });
   } catch (error) {
     const axiosError = error as AxiosError;
-    res.status(500).json({
-      ok: false,
-      message: axiosError?.message || "An error occurred",
-    });
+    res
+      .status(500)
+      .setHeader("Content-Type", "application/json")
+      .json({
+        ok: false,
+        message: axiosError?.message || "An error occurred",
+      });
   }
 };
