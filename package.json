@@ -3,21 +3,28 @@
   "version": "1.0.0",
   "description": "Calendar of working days of Kazakhstan",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "live": "nodemon server.js"
+    "build": "tsc --watch",
+    "live": "nodemon src/server.ts --watch dist"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.4.0",
     "express": "^4.18.2",
-    "jsdom": "^22.1.0"
+    "jsdom": "^22.1.0",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/express": "^4.17.17",
+    "@types/jsdom": "^21.1.1",
     "autoprefixer": "^10.4.14",
+    "compression": "^1.7.4",
     "nodemon": "^2.0.22",
     "postcss": "^8.4.24",
-    "prettier": "2.8.8"
+    "prettier": "2.8.8",
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.1.3"
   }
 }
