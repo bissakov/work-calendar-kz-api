@@ -37,8 +37,8 @@ Returns a list of supported years.
 
 ```json
 {
-  "ok": true,
-  "years": [2019, 2020, 2021 /* ... */]
+    "ok": true,
+    "years": [2019, 2020, 2021, ...]
 }
 ```
 
@@ -77,11 +77,11 @@ Success Response
             "day": 1,
             "isDayOff": true,
             "isSuperHoliday": false
-          }
-          // ...
+          },
+          ...
         ]
-      }
-      // ...
+      },
+      ...
     ]
   }
 }
